@@ -1,4 +1,7 @@
+#include "strutil.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h
 
 /* devuelve la cantidad de bytes hasta el separador*/
 size_t buscar(const char* s, char sep){
