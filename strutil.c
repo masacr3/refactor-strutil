@@ -62,3 +62,10 @@ char **split(const char* str, char sep){
 	}
 	return _split;
 }
+
+void free_strv(char *strv[]){
+    for (int i = 0; strv[i]; i++) {
+        free(strv[i]);
+    }
+	free(strv);
+}
