@@ -28,5 +28,34 @@ char **split(const char* str, char sep){
 	
 	if (!_split) return NULL;
 	
+	_split[ cant_sep + 1 ] = NULL;
 	
+	size_t inicio = 0;
+	
+	for (int i=0; i <= cant_sep; i++){
+		//calculo cuantos bytes voy a copiar
+		size_t bytes = buscar(&str[inicio], sep);
+		
+		//creo la cadena + 1 (para el caracter '\0'
+		char* s = malloc( sizeof(char) * (bytes + 1));
+	
+		if( !s ){
+			strv_free(_split);
+			return NULL;
+		}
+		
+		//copio los caracteres a s
+		memcpy(s, &str[inicio], bytes);
+		
+		//inserto el byte '\0'
+		s[bytes] = '\0';
+		
+		//vinculo la cadena al split
+		_split[i] = s;
+		
+		//salto el separador
+		inicio += bytes + 1;
+		
+	}
+	return _split;
 }
