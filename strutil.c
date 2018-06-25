@@ -43,7 +43,7 @@ char **split(const char* str, char sep){
 		char* s = malloc( sizeof(char) * (bytes + 1));
 	
 		if( !s ){
-			strv_free(_split);
+			free_strv(_split);
 			return NULL;
 		}
 		
