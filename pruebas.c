@@ -3,7 +3,7 @@
 
 int main(){
   char* cadena = "hola como estas";
-  char** s = split("hola como estas",' ');
+  char** s = split(cadena,' ');
   
   fprintf(stdout, "cadena original: %s\n", cadena);
   printf("\n");
