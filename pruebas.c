@@ -18,5 +18,6 @@ int main(){
   
   
   free_strv(s);
+  free(j);
   return 0;
 }
