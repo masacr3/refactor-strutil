@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void strvlen ( const char* s, size_t* len, size_t* buffer){
+void strvlen ( char** s, size_t* len, size_t* buffer){
 	*len = 0;
 	*buffer = 0;
 	
 	for(int i=0; s[i]; i++){
-		*len++;
+		*len += 1;
 		*buffer += strlen(s[i]);
 	}
 }
@@ -93,11 +93,20 @@ char* join (char** strv, char sep){
 	size_t largo = 0;
 	
 	for(int i=0; i<len-1; i++){
+		//copio la cadena al join
+		strcpy(&_join[largo],strv[i]);
+
+		//calculo la posicion del separador
 		largo += strlen(strv[i]);
-		strcpy(_join,strv[i]);
+		
+		//agrego el separador
 		_join[largo] = sep;
+		
+		//avanzo una posicion
+		largo++;
 	}
-	strcpy(_join, strv[len-1]);
+
+	strcpy(&_join[largo], strv[len-1]);
 	
 	return _join;
 }

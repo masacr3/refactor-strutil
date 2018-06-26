@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "strutil.h"
 
 int main(){
-  char* cadena = ",,";
+  char* cadena = "leo,piola,gg";
   char** s = split(cadena,',');
   
   fprintf(stdout, "cadena original: %s\n", cadena);
