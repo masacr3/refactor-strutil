@@ -3,6 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void strvlen ( const char* s, size_t* len, size_t* buffer){
+	*len = 0;
+	*buffer = 0;
+	
+	for(int i=0; s[i]; i++){
+		*len++;
+		*buffer += strlen(s[i]);
+	}
+}
+
 /* devuelve la cantidad de bytes hasta el separador*/
 size_t buscar(const char* s, char sep){
 	size_t cont = 0;
@@ -61,6 +71,33 @@ char **split(const char* str, char sep){
 		
 	}
 	return _split;
+}
+
+char* join (char** strv, char sep){
+	size_t len;
+	size_t buffer;
+	
+	//obtengo len y la cantidad de caracteres
+	strvlen(strv, &len, &buffer);
+	
+	size_t bytes = len + buffer;
+	
+	char* _join = malloc( sizeof(char) * (bytes + 1) );
+	
+	if( !_join) return NULL;
+	
+	_join[bytes] = '\0';
+	
+	if (!len) return _join;
+	
+	for(int i=0; i<len-1; i++){
+		size_t largo = strlen(strv[i]);
+		strcpy(_join,strv[i]);
+		_join[largo] = sep;
+	}
+	strcpy(_join, strv[len-1]);
+	
+	return _join;
 }
 
 void free_strv(char *strv[]){
