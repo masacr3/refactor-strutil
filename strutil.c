@@ -74,6 +74,9 @@ char **split(const char* str, char sep){
 }
 
 char* join (char** strv, char sep){
+	
+	if (sep == '\0' || !str) return NULL;
+	
 	size_t len;
 	size_t buffer;
 	
