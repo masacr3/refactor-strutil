@@ -12,6 +12,11 @@ int main(){
     fprintf(stdout, "%d - %s\n",i, s[i]);
   }
   
+  char* j = join(s,',');
+  
+  fprintf(stdout, "\n join-> %s", j);
+  
+  
   free_strv(s);
   return 0;
 }
