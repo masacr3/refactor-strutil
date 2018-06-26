@@ -90,8 +90,10 @@ char* join (char** strv, char sep){
 	
 	if (!len) return _join;
 	
+	size_t largo = 0;
+	
 	for(int i=0; i<len-1; i++){
-		size_t largo = strlen(strv[i]);
+		largo += strlen(strv[i]);
 		strcpy(_join,strv[i]);
 		_join[largo] = sep;
 	}
